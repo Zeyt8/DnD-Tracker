@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DnD-Tracker</string>
+    <string-array name="dice">
+        <item>D4</item>
+        <item>D6</item>
+        <item>D8</item>
+        <item>D10</item>
+        <item>D12</item>
+        <item>D20</item>
+    </string-array>
+</resources>
