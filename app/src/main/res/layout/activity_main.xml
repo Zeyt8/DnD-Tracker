@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,40 +7,276 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editTextNumberDecimal4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/editTextNumberDecimal3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="15dp"
-        android:layout_height="50dp"
-        android:paddingTop="5dp"
-        android:text="/"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal4"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal3"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:fontFamily="@font/vecna_oppx"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:text="/"
+                android:textAlignment="center"
+                android:textSize="34sp"
+                app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <Spinner
+                android:id="@+id/hitDiceSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/spinner_background"
+                android:entries="@array/dice"
+                android:gravity="start|center_vertical"
+                android:spinnerMode="dropdown"
+                app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal4"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <EditText
+                android:id="@+id/editTextNumberDecimal"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
+                android:ems="10"
+                android:fontFamily="@font/vecna_oppx"
+                android:gravity="center"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:padding="0dp"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toStartOf="@+id/textView4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="196dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/vecna_oppx"
+                android:gravity="center_vertical"
+                android:text="Hit Dice"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/spell_slots_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/vecna_oppx"
+                android:gravity="center_vertical"
+                android:text="Spell Slots"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/vecna_oppx"
+                android:gravity="center_vertical"
+                android:text="Hit Points"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextNumberDecimal4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:fontFamily="@font/vecna_oppx"
+                android:gravity="center"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:padding="0dp"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toStartOf="@+id/hitDiceSpinner"
+                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:fontFamily="@font/vecna_oppx"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:text="/"
+                android:textAlignment="center"
+                android:textSize="34sp"
+                app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal4"
+                app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal3"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <EditText
+                android:id="@+id/editTextNumberDecimal2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:fontFamily="@font/vecna_oppx"
+                android:gravity="center"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:padding="0dp"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <EditText
+                android:id="@+id/editTextNumberDecimal3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:ems="10"
+                android:fontFamily="@font/vecna_oppx"
+                android:gravity="center"
+                android:hint="0"
+                android:inputType="numberDecimal"
+                android:padding="0dp"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toStartOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/vecnabold_4yy4"
+                android:gravity="center"
+                android:text="V"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/spell_slots_text"
+                app:layout_constraintStart_toEndOf="@+id/spell_slots_text"
+                app:layout_constraintTop_toTopOf="@+id/spell_slots_text" />
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/spell_slots_expandable_layout"
+                android:layout_width="0dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                app:el_duration="1000"
+                app:el_expanded="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spell_slots_text">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp">
+
+                    <EditText
+                        android:id="@+id/editTextNumberDecimal5"
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:ems="10"
+                        android:fontFamily="@font/vecna_oppx"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="numberDecimal"
+                        android:padding="0dp"
+                        android:textSize="30sp"
+                        app:layout_constraintStart_toEndOf="@+id/textView9"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/vecna_oppx"
+                        android:gravity="center_vertical"
+                        android:text="Level 1"
+                        android:textSize="30sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/vecna_oppx"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="30sp"
+                        app:layout_constraintStart_toEndOf="@+id/textView8"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="32dp"
+                        android:fontFamily="@font/vecnabold_4yy4"
+                        android:gravity="center"
+                        android:text="-"
+                        android:textSize="30sp"
+                        app:layout_constraintStart_toEndOf="@+id/textView3"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/vecna_oppx"
+                        android:gravity="center"
+                        android:text="/"
+                        android:textSize="30sp"
+                        app:layout_constraintStart_toEndOf="@+id/textView7"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/vecnabold_4yy4"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textSize="30sp"
+                        app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal5"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -53,92 +290,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_add" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="32dp"
-        android:text="Hit Points"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
-        android:text="Spell Slots"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="32dp"
-        android:text="Hit Dice"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextNumberDecimal"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="36dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <EditText
-        android:id="@+id/editTextNumberDecimal2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="numberDecimal"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="15dp"
-        android:layout_height="50dp"
-        android:paddingTop="5dp"
-        android:text="/"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="196dp" />
-
-    <Spinner
-        android:id="@+id/hitDiceSpinner"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

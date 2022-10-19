@@ -8,14 +8,22 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import net.cachapa.expandablelayout.ExpandableLayout;
+
 public final class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
 
-        Spinner spinner = findViewById(R.id.hitDiceSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.dice, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        ExpandableLayout spellSlotExpandable = findViewById(R.id.spell_slots_expandable_layout);
+        findViewById(R.id.spell_slots_text).setOnClickListener(
+                view -> {
+                    if (spellSlotExpandable.isExpanded()) {
+                        spellSlotExpandable.collapse();
+                    } else {
+                        spellSlotExpandable.expand();
+                    }
+                }
+        );
     }
 }
