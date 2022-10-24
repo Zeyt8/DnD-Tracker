@@ -23,7 +23,7 @@ public class SpellSlots extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        for (int i = 1; i <= 1; i++) {
+        for (int i = 1; i <= 9; i++) {
             TextView decrease = view.findViewWithTag("decrease" + i);
             TextView increase = view.findViewWithTag("increase" + i);
             TextView current = view.findViewWithTag("currentSpellSlots" + i);
