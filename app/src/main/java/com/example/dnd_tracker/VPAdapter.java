@@ -19,6 +19,8 @@ public class VPAdapter extends FragmentStateAdapter {
                 return new Stats();
             case 1:
                 return new SpellSlots();
+            case 2:
+                return new AbilitiesAndBuffs();
             default:
                 return new Stats();
         }
