@@ -1,4 +1,4 @@
-package com.example.dnd_tracker;
+package com.example.dnd_tracker.spells;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.dnd_tracker.R;
 
 public class SpellSlots extends Fragment {
 

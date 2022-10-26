@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.dnd_tracker.abilities_buffs.AbilitiesAndBuffs;
+import com.example.dnd_tracker.spells.SpellSlots;
+import com.example.dnd_tracker.stats.Stats;
+
 public class VPAdapter extends FragmentStateAdapter {
 
     public VPAdapter(@NonNull FragmentActivity fragmentActivity) {
@@ -28,6 +32,6 @@ public class VPAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }
