@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 
 import com.example.dnd_tracker.R;
 
+import org.jetbrains.annotations.NotNull;
+
 public class SpellSlots extends Fragment {
 
     @Nullable
@@ -24,7 +26,7 @@ public class SpellSlots extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         for (int i = 1; i <= 9; i++) {
             TextView decrease = view.findViewWithTag("decrease" + i);
             TextView increase = view.findViewWithTag("increase" + i);

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".stats.SetPlayerBaseStats">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:background="#ffffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center_vertical"
+            android:text="Base Stats"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/str_text"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:text="Str:"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/dex_text"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:text="Dex:"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toStartOf="@+id/editTextNumber3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/editTextNumber"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/con_text"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:text="Con:"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toStartOf="@+id/editTextNumber4"
+            app:layout_constraintStart_toEndOf="@+id/editTextNumber3"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/int_text"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:text="Int:"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/str_text" />
+
+        <TextView
+            android:id="@+id/wis_text"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:text="Wis:"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toStartOf="@+id/editTextNumber6"
+            app:layout_constraintStart_toEndOf="@+id/editTextNumber5"
+            app:layout_constraintTop_toBottomOf="@+id/dex_text" />
+
+        <TextView
+            android:id="@+id/cha_text"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:text="Cha:"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toStartOf="@+id/editTextNumber7"
+            app:layout_constraintStart_toEndOf="@+id/editTextNumber6"
+            app:layout_constraintTop_toBottomOf="@+id/con_text" />
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/vecnabold_4yy4"
+            android:text="Submit"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/textView6"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:hint="0"
+            android:inputType="number"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/dex_text"
+            app:layout_constraintStart_toEndOf="@+id/str_text"
+            app:layout_constraintTop_toTopOf="@+id/str_text" />
+
+        <EditText
+            android:id="@+id/editTextNumber5"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:hint="0"
+            android:inputType="number"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/wis_text"
+            app:layout_constraintStart_toEndOf="@+id/int_text"
+            app:layout_constraintTop_toTopOf="@+id/int_text" />
+
+        <EditText
+            android:id="@+id/editTextNumber6"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:hint="0"
+            android:inputType="number"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/cha_text"
+            app:layout_constraintStart_toEndOf="@+id/wis_text"
+            app:layout_constraintTop_toTopOf="@+id/wis_text" />
+
+        <EditText
+            android:id="@+id/editTextNumber7"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:hint="0"
+            android:inputType="number"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cha_text"
+            app:layout_constraintTop_toTopOf="@+id/cha_text" />
+
+        <EditText
+            android:id="@+id/editTextNumber3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:hint="0"
+            android:inputType="number"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/con_text"
+            app:layout_constraintStart_toEndOf="@+id/dex_text"
+            app:layout_constraintTop_toTopOf="@+id/dex_text" />
+
+        <EditText
+            android:id="@+id/editTextNumber4"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:hint="0"
+            android:inputType="number"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/con_text"
+            app:layout_constraintTop_toTopOf="@+id/con_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

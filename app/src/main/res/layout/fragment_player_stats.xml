@@ -7,6 +7,7 @@
     tools:context=".stats.player_stats">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
@@ -32,7 +33,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/vecna_oppx"
-            android:text="Str: 0"
+            android:text="Str:\n0(+0)"
             android:textSize="34sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -43,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/vecna_oppx"
-            android:text="Dex: 0"
+            android:text="Dex:\n0(+0)"
             android:textSize="34sp"
             app:layout_constraintEnd_toStartOf="@+id/con_text"
             app:layout_constraintStart_toEndOf="@+id/str_text"
@@ -56,7 +57,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/vecna_oppx"
-            android:text="Con: 0"
+            android:text="Con:\n0(+0)"
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -68,7 +69,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/vecna_oppx"
-            android:text="Int: 0"
+            android:text="Int:\n0(+0)"
             android:textSize="34sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/str_text" />
@@ -79,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/vecna_oppx"
-            android:text="Wis: 0"
+            android:text="Wis:\n0(+0)"
             android:textSize="34sp"
             app:layout_constraintEnd_toStartOf="@+id/cha_text"
             app:layout_constraintStart_toEndOf="@+id/int_text"
@@ -87,18 +88,18 @@
 
         <TextView
             android:id="@+id/cha_text"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/vecna_oppx"
-            android:text="Cha: 0"
+            android:text="Cha:\n0(+0)"
             android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/con_text" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/submit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -108,5 +109,14 @@
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
 </FrameLayout>
