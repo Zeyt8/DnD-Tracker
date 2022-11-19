@@ -15,33 +15,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.dnd_tracker.database.Database;
 import com.example.dnd_tracker.R;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
 import java.util.Map;
 
-import com.example.dnd_tracker.Stats;
+import com.example.dnd_tracker.EStats;
 
-public class SetPlayerBaseStats extends Fragment {
+public class set_player_base_stats extends Fragment {
 
-    public HashMap<Stats, Integer> baseStats = new HashMap<>(Map.ofEntries(
-            entry(Stats.Str, 0),
-            entry(Stats.Dex, 0),
-            entry(Stats.Con, 0),
-            entry(Stats.Int, 0),
-            entry(Stats.Wis, 0),
-            entry(Stats.Cha, 0)
-    ));
-
-    Map<Stats, Integer> statIds = Map.ofEntries(
-            entry(Stats.Str, R.id.str_input),
-            entry(Stats.Dex, R.id.dex_input),
-            entry(Stats.Con, R.id.con_input),
-            entry(Stats.Int, R.id.int_input),
-            entry(Stats.Wis, R.id.wis_input),
-            entry(Stats.Cha, R.id.cha_input)
+    Map<EStats, Integer> statIds = Map.ofEntries(
+            entry(EStats.Str, R.id.str_input),
+            entry(EStats.Dex, R.id.dex_input),
+            entry(EStats.Con, R.id.con_input),
+            entry(EStats.Int, R.id.int_input),
+            entry(EStats.Wis, R.id.wis_input),
+            entry(EStats.Cha, R.id.cha_input)
     );
 
     Button submitButton;
@@ -60,10 +51,10 @@ public class SetPlayerBaseStats extends Fragment {
         submitButton = view.findViewById(R.id.submit_button);
         submitButton.setOnClickListener(v -> {
             getParentFragmentManager().beginTransaction().remove(this).commit();
-            playerStats.computeStats(baseStats);
+            playerStats.computeStats();
         });
-        for (Map.Entry<Stats, Integer> st : baseStats.entrySet()) {
-            EditText input = view.findViewById(statIds.get(st.getKey()));
+        for (Map.Entry<EStats, Integer> st : statIds.entrySet()) {
+            EditText input = view.findViewById(st.getValue());
             input.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -75,7 +66,7 @@ public class SetPlayerBaseStats extends Fragment {
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    baseStats.put(st.getKey(), Integer.parseInt(s.toString()));
+                    Database.getInstance().baseStats.setStat(st.getKey(), Integer.parseInt(s.toString()));
                 }
             });
         }

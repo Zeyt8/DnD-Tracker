@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.example.dnd_tracker.R;
 
-public class AbilitiesAndBuffs extends Fragment {
+public class abilities_and_buffs extends Fragment {
 
     @Nullable
     @Override

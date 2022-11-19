@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".spells.SpellSlots">
+    tools:context=".spells.spell_slots">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

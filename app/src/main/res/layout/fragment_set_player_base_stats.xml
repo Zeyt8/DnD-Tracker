@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e3e1e1"
-    tools:context=".stats.SetPlayerBaseStats">
+    tools:context=".stats.set_player_base_stats">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"

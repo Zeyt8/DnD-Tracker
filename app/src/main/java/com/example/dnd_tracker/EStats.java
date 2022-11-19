@@ -1,6 +1,6 @@
 package com.example.dnd_tracker;
 
-public enum Stats {
+public enum EStats {
     Str,
     Dex,
     Con,

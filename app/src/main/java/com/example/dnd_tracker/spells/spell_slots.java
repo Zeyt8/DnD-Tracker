@@ -15,7 +15,7 @@ import com.example.dnd_tracker.R;
 
 import org.jetbrains.annotations.NotNull;
 
-public class SpellSlots extends Fragment {
+public class spell_slots extends Fragment {
 
     @Nullable
     @Override
