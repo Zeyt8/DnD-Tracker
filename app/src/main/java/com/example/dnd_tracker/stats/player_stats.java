@@ -20,7 +20,6 @@ import com.example.dnd_tracker.database.Database;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class player_stats extends Fragment {

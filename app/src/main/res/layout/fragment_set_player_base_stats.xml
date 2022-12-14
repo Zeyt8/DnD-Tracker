@@ -132,7 +132,7 @@
             android:fontFamily="@font/vecna_oppx"
             android:gravity="center"
             android:hint="0"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/dex_text"
             app:layout_constraintStart_toEndOf="@+id/str_text"
@@ -146,7 +146,7 @@
             android:fontFamily="@font/vecna_oppx"
             android:gravity="center"
             android:hint="0"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/wis_text"
             app:layout_constraintStart_toEndOf="@+id/int_text"
@@ -160,7 +160,7 @@
             android:fontFamily="@font/vecna_oppx"
             android:gravity="center"
             android:hint="0"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/cha_text"
             app:layout_constraintStart_toEndOf="@+id/wis_text"
@@ -175,7 +175,7 @@
             android:fontFamily="@font/vecna_oppx"
             android:gravity="center"
             android:hint="0"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cha_text"
@@ -189,7 +189,7 @@
             android:fontFamily="@font/vecna_oppx"
             android:gravity="center"
             android:hint="0"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/con_text"
             app:layout_constraintStart_toEndOf="@+id/dex_text"
@@ -204,7 +204,7 @@
             android:fontFamily="@font/vecna_oppx"
             android:gravity="center"
             android:hint="0"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -212,4 +212,5 @@
             app:layout_constraintTop_toTopOf="@+id/con_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>

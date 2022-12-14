@@ -8,6 +8,19 @@
         <item>D12</item>
         <item>D20</item>
     </string-array>
+    <string-array name="stats">
+        <item>STR</item>
+        <item>DEX</item>
+        <item>CON</item>
+        <item>INT</item>
+        <item>WIS</item>
+        <item>CHA</item>
+    </string-array>
+    <string-array name="modifierTypes">
+        <item>Flat</item>
+        <item>Percentage</item>
+        <item>Setter</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="large_text">

@@ -1,8 +1,10 @@
 package com.example.dnd_tracker.database;
 
 import com.example.dnd_tracker.EStats;
+import com.example.dnd_tracker.stats.StatModifier;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Database {
@@ -20,6 +22,7 @@ public class Database {
 
     public Stats baseStats = new Stats();
     public Stats actualStats = new Stats();
+    public ArrayList<StatModifier> statModifiers = new ArrayList<>();
 
     public void setBaseStats(int str, int dex, int con, int _int, int wis, int cha) {
         baseStats.str = str;
