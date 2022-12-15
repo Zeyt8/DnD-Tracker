@@ -5,7 +5,7 @@
     android:id="@+id/stat_modifier"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".stats.stat_modifier">
+    tools:context=".stats.stat_modifier_fragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -34,27 +34,27 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/stat_spinner"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:entries="@array/stats"
-            app:layout_constraintBottom_toTopOf="@+id/spinner2"
-            app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal6"
+            app:layout_constraintBottom_toTopOf="@+id/type_spinner"
+            app:layout_constraintEnd_toStartOf="@+id/value_text_input"
             app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/type_spinner"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:entries="@array/modifierTypes"
             app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
-            app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal6"
+            app:layout_constraintEnd_toStartOf="@+id/value_text_input"
             app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2"
-            app:layout_constraintTop_toBottomOf="@+id/spinner" />
+            app:layout_constraintTop_toBottomOf="@+id/stat_spinner" />
 
         <EditText
-            android:id="@+id/editTextNumberDecimal6"
+            android:id="@+id/value_text_input"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:ems="10"
@@ -65,7 +65,7 @@
             android:textSize="60sp"
             app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/spinner"
+            app:layout_constraintStart_toEndOf="@+id/stat_spinner"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,25 +14,26 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.dnd_tracker.Listener;
 import com.example.dnd_tracker.R;
-import com.example.dnd_tracker.EStats;
+import com.example.dnd_tracker.Stats;
 import com.example.dnd_tracker.database.Database;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-public class player_stats extends Fragment {
+public class player_stats_fragment extends Fragment implements Listener {
 
-    set_player_base_stats setPlayerBaseStats;
+    set_player_base_stats_fragment setPlayerBaseStats;
 
-    Map<EStats, Integer> statIds = Map.ofEntries(
-            entry(EStats.Str, R.id.str_text),
-            entry(EStats.Dex, R.id.dex_text),
-            entry(EStats.Con, R.id.con_text),
-            entry(EStats.Int, R.id.int_text),
-            entry(EStats.Wis, R.id.wis_text),
-            entry(EStats.Cha, R.id.cha_text)
+    Map<Stats, Integer> statIds = Map.ofEntries(
+            entry(Stats.Str, R.id.str_text),
+            entry(Stats.Dex, R.id.dex_text),
+            entry(Stats.Con, R.id.con_text),
+            entry(Stats.Int, R.id.int_text),
+            entry(Stats.Wis, R.id.wis_text),
+            entry(Stats.Cha, R.id.cha_text)
     );
 
     @Override
@@ -44,10 +45,10 @@ public class player_stats extends Fragment {
 
     @Override
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
+        Database.statChangeListeners.add(this);
         Button button = view.findViewById(R.id.submit_button);
         button.setOnClickListener(v -> {
-            setPlayerBaseStats = new set_player_base_stats();
-            setPlayerBaseStats.playerStats = this;
+            setPlayerBaseStats = new set_player_base_stats_fragment();
             getParentFragmentManager().beginTransaction()
                     .add(R.id.frameLayout, setPlayerBaseStats).commit();
         });
@@ -55,19 +56,19 @@ public class player_stats extends Fragment {
 
     @SuppressLint("SetTextI18n")
     public void computeStats() {
-        for (Map.Entry<EStats, Integer> st : statIds.entrySet()) {
+        for (Map.Entry<Stats, Integer> st : statIds.entrySet()) {
             TextView input = requireView().findViewById(st.getValue());
 
-            Database.getInstance().actualStats.setStat(
-                    st.getKey(),
-                    Database.getInstance().baseStats.getStat(st.getKey())
-            );
-
-            int value = Database.getInstance().actualStats.getStat(st.getKey());
+            int value = Database.actualStats.getStat(st.getKey());
             int modifier = (int)((value - 10) / 2);
             input.setText(
                     st.getKey().toString() + ":\n" + value + "(" + (modifier < 0 ? modifier : "+" + modifier) + ")"
             );
         }
+    }
+
+    @Override
+    public void onEvent() {
+        computeStats();
     }
 }

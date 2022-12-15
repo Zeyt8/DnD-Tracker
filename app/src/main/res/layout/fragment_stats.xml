@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".stats.stats">
+    tools:context=".stats.stats_fragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/parent_layout"
@@ -40,7 +40,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/base_stats_view"
-            android:name="com.example.dnd_tracker.stats.player_stats"
+            android:name="com.example.dnd_tracker.stats.player_stats_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

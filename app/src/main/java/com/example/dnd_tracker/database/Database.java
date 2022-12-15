@@ -1,6 +1,7 @@
 package com.example.dnd_tracker.database;
 
-import com.example.dnd_tracker.EStats;
+import com.example.dnd_tracker.Listener;
+import com.example.dnd_tracker.Stats;
 import com.example.dnd_tracker.stats.StatModifier;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -9,7 +10,7 @@ import java.util.Map;
 
 public class Database {
 
-    public static Database Instance;
+    private static Database Instance;
 
     private Database() {}
 
@@ -20,9 +21,11 @@ public class Database {
         return Instance;
     }
 
-    public Stats baseStats = new Stats();
-    public Stats actualStats = new Stats();
-    public ArrayList<StatModifier> statModifiers = new ArrayList<>();
+    public static PlayerStats baseStats = new PlayerStats();
+    public static PlayerStats actualStats = new PlayerStats();
+    public static ArrayList<StatModifier> statModifiers = new ArrayList<>();
+
+    public static ArrayList<Listener> statChangeListeners = new ArrayList<>();
 
     public void setBaseStats(int str, int dex, int con, int _int, int wis, int cha) {
         baseStats.str = str;
@@ -33,12 +36,29 @@ public class Database {
         baseStats.cha = cha;
     }
 
-    public Map<EStats, Integer> getBaseStats() {
+    public static Map getBaseStats() {
         ObjectMapper mapObject = new ObjectMapper();
         return mapObject.convertValue(baseStats, Map.class);
     }
 
-    public void save(String filename) {
+    public static void save(String filename) {
 
+    }
+
+    public static void recalculateActualStats() {
+        for (Stats stat : Stats.values()) {
+            int value = baseStats.getStat(stat);
+            for (StatModifier modifier : statModifiers) {
+                System.out.println("StatModifier: " + modifier.stat + " " + modifier.type + " " + modifier.value);
+                if (modifier.stat == stat) {
+                    value = modifier.applyModifier(value);
+                }
+            }
+            System.out.println("Stat: " + stat + " Value: " + value);
+            actualStats.setStat(stat, value);
+        }
+        for (Listener listener : statChangeListeners) {
+            listener.onEvent();
+        }
     }
 }

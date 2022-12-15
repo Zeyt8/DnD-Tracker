@@ -16,7 +16,7 @@ import com.example.dnd_tracker.R;
 
 import org.jetbrains.annotations.NotNull;
 
-public class stats extends Fragment {
+public class stats_fragment extends Fragment {
 
     View lastStatModifier;
 
@@ -35,8 +35,9 @@ public class stats extends Fragment {
     }
 
     public void addModifier(View view) {
-        Fragment sm = new stat_modifier();
+        Fragment sm = new stat_modifier_fragment();
         View v = sm.onCreateView(getLayoutInflater(), (ViewGroup) view, null);
+        sm.onViewCreated(v, null);
         v.setId(View.generateViewId());
         ConstraintLayout cl = view.findViewById(R.id.parent_layout);
         ConstraintSet set = new ConstraintSet();

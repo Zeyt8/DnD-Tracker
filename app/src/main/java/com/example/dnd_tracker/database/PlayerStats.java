@@ -1,10 +1,10 @@
 package com.example.dnd_tracker.database;
 
-import com.example.dnd_tracker.EStats;
+import com.example.dnd_tracker.Stats;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Stats {
+public class PlayerStats {
     public int str;
     public int dex;
     public int con;
@@ -12,7 +12,7 @@ public class Stats {
     public int wis;
     public int cha;
 
-    public void setStat(@NotNull EStats stat, int value) {
+    public void setStat(@NotNull Stats stat, int value) {
         switch (stat) {
             case Str:
                 str = value;
@@ -35,7 +35,7 @@ public class Stats {
         }
     }
 
-    public int getStat(@NotNull EStats stat) {
+    public int getStat(@NotNull Stats stat) {
         switch (stat) {
             case Str:
                 return str;
