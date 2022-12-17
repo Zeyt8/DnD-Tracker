@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.dnd_tracker.abilities_buffs.abilities_and_buffs;
-import com.example.dnd_tracker.spells.spell_slots_fragment;
+import com.example.dnd_tracker.buffs_debuffs.buffs_and_debuffs_fragment;
+import com.example.dnd_tracker.spells_abilities.spell_slots_fragment;
 import com.example.dnd_tracker.stats.stats_fragment;
 
 public class VPAdapter extends FragmentStateAdapter {
@@ -24,7 +24,7 @@ public class VPAdapter extends FragmentStateAdapter {
             case 1:
                 return new spell_slots_fragment();
             case 2:
-                return new abilities_and_buffs();
+                return new buffs_and_debuffs_fragment();
             default:
                 return new stats_fragment();
         }

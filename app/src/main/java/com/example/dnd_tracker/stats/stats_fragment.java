@@ -35,7 +35,7 @@ public class stats_fragment extends Fragment {
     }
 
     public void addModifier(View view) {
-        Fragment sm = new stat_modifier_fragment();
+        Fragment sm = stat_modifier_fragment.newInstance();
         View v = sm.onCreateView(getLayoutInflater(), (ViewGroup) view, null);
         sm.onViewCreated(v, null);
         v.setId(View.generateViewId());

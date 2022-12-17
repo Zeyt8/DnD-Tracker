@@ -28,6 +28,8 @@ public class stat_modifier_fragment extends Fragment {
 
     public stat_modifier_fragment() {
         // Required empty public constructor
+        statModifier = new StatModifier();
+        Database.statModifiers.add(statModifier);
     }
 
     /**
@@ -43,8 +45,6 @@ public class stat_modifier_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        statModifier = new StatModifier();
-        Database.statModifiers.add(statModifier);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_stat_modifier, container, false);
     }

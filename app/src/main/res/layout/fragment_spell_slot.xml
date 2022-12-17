@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".spells_abilities.spell_slot_fragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/spell_slot_level_text"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center_vertical"
+            android:text="Level 1"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/decrease_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/vecnabold_4yy4"
+            android:gravity="center"
+            android:text="-"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/spell_slot_level_text"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/current_spell_slots"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/slash"
+            app:layout_constraintStart_toEndOf="@+id/decrease_button"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/slash"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:text="/"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/max_spell_slots"
+            app:layout_constraintStart_toEndOf="@+id/current_spell_slots"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/max_spell_slots"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="2dp"
+            android:ems="10"
+            android:fontFamily="@font/vecna_oppx"
+            android:gravity="center"
+            android:hint="0"
+            android:inputType="numberDecimal"
+            android:padding="5dp"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/slash"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/increase_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/vecnabold_4yy4"
+            android:gravity="center"
+            android:text="+"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/max_spell_slots"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
