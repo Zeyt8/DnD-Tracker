@@ -51,12 +51,10 @@ public class Database {
         for (Stats stat : Stats.values()) {
             int value = baseStats.getStat(stat);
             for (StatModifier modifier : statModifiers) {
-                System.out.println("StatModifier: " + modifier.stat + " " + modifier.type + " " + modifier.value);
-                if (modifier.stat == stat) {
+                if (modifier.stat == stat && modifier.active) {
                     value = modifier.applyModifier(value);
                 }
             }
-            System.out.println("Stat: " + stat + " Value: " + value);
             actualStats.setStat(stat, value);
         }
         for (Listener listener : statChangeListeners) {

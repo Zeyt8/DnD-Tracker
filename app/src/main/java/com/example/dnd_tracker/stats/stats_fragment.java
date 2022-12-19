@@ -16,9 +16,13 @@ import com.example.dnd_tracker.R;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 public class stats_fragment extends Fragment {
 
-    View lastStatModifier;
+    ConstraintLayout cl;
+
+    ArrayList<stat_modifier_fragment> statModifierFragments = new ArrayList<>();
 
     @Nullable
     @Override
@@ -32,24 +36,46 @@ public class stats_fragment extends Fragment {
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         Button button = view.findViewById(R.id.add_stat_modifier_button);
         button.setOnClickListener(v -> addModifier(view));
+        cl = view.findViewById(R.id.parent_layout);
     }
 
     public void addModifier(View view) {
-        Fragment sm = stat_modifier_fragment.newInstance();
-        View v = sm.onCreateView(getLayoutInflater(), (ViewGroup) view, null);
+        stat_modifier_fragment sm = stat_modifier_fragment.newInstance(this);
+        View v = sm.onCreateView(getLayoutInflater(), cl, null);
         sm.onViewCreated(v, null);
+
         v.setId(View.generateViewId());
-        ConstraintLayout cl = view.findViewById(R.id.parent_layout);
         ConstraintSet set = new ConstraintSet();
         cl.addView(v);
         set.clone(cl);
-        if (lastStatModifier == null) {
+
+        statModifierFragments.add(sm);
+
+        if (statModifierFragments.size() == 1) {
             set.connect(v.getId(), ConstraintSet.TOP, R.id.modifiers_text_view, ConstraintSet.BOTTOM, 0);
         } else {
-            set.connect(v.getId(), ConstraintSet.TOP, lastStatModifier.getId(), ConstraintSet.BOTTOM, 0);
+            set.connect(v.getId(), ConstraintSet.TOP, v.getId(), ConstraintSet.BOTTOM, 0);
         }
-        lastStatModifier = v;
-        set.connect(R.id.add_stat_modifier_button, ConstraintSet.TOP, lastStatModifier.getId(), ConstraintSet.BOTTOM, 16);
+        set.connect(R.id.add_stat_modifier_button, ConstraintSet.TOP, v.getId(), ConstraintSet.BOTTOM, 16);
+        set.applyTo(cl);
+    }
+
+    public void removeModifier(stat_modifier_fragment fragment, int id) {
+        ConstraintSet set = new ConstraintSet();
+        cl.removeView(cl.findViewById(id));
+        cl.forceLayout();
+        set.clone(cl);
+        if (statModifierFragments.indexOf(fragment) != statModifierFragments.size() - 1) {
+            set.connect(statModifierFragments.indexOf(fragment) + 1, ConstraintSet.TOP,
+                statModifierFragments.indexOf(fragment) - 1, ConstraintSet.BOTTOM, 0);
+        }
+        statModifierFragments.remove(fragment);
+        if (statModifierFragments.size() == 0) {
+            set.connect(R.id.add_stat_modifier_button, ConstraintSet.TOP, R.id.modifiers_text_view, ConstraintSet.BOTTOM, 16);
+        } else {
+            set.connect(R.id.add_stat_modifier_button, ConstraintSet.TOP,
+                    statModifierFragments.get(statModifierFragments.size() - 1).getView().getId(), ConstraintSet.BOTTOM, 16);
+        }
         set.applyTo(cl);
     }
 }

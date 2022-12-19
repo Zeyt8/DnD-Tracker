@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -12,7 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import com.example.dnd_tracker.R;
@@ -25,6 +28,10 @@ public class stat_modifier_fragment extends Fragment {
     Spinner stat;
     Spinner type;
     EditText value;
+    CheckBox active;
+    ImageButton delete;
+
+    stats_fragment parent;
 
     public stat_modifier_fragment() {
         // Required empty public constructor
@@ -38,8 +45,10 @@ public class stat_modifier_fragment extends Fragment {
      *
      * @return A new instance of fragment statModifier.
      */
-    public static stat_modifier_fragment newInstance() {
-        return new stat_modifier_fragment();
+    public static stat_modifier_fragment newInstance(stats_fragment parent) {
+        stat_modifier_fragment fragment = new stat_modifier_fragment();
+        fragment.parent = parent;
+        return fragment;
     }
 
     @Override
@@ -54,7 +63,8 @@ public class stat_modifier_fragment extends Fragment {
         stat = view.findViewById(R.id.stat_spinner);
         type = view.findViewById(R.id.type_spinner);
         value = view.findViewById(R.id.value_text_input);
-        System.out.println("StatModifierFragment: " + statModifier);
+        active = view.findViewById(R.id.active_checkbox);
+        delete = view.findViewById(R.id.delete_button);
 
         stat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -100,6 +110,16 @@ public class stat_modifier_fragment extends Fragment {
                 }
                 Database.recalculateActualStats();
             }
+        });
+
+        active.setOnClickListener(v -> {
+            statModifier.active = active.isChecked();
+            Database.recalculateActualStats();
+        });
+
+        delete.setOnClickListener(v -> {
+            parent.removeModifier(this, view.getId());
+            Database.recalculateActualStats();
         });
     }
 }

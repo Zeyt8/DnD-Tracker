@@ -6,6 +6,7 @@ public class StatModifier {
     public Stats stat = Stats.Str;
     public Types type = Types.Flat;
     public int value = 0;
+    public boolean active = true;
 
     enum Types {
         Flat,
