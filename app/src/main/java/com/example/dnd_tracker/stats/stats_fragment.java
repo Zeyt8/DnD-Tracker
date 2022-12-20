@@ -22,7 +22,7 @@ public class stats_fragment extends Fragment {
 
     ConstraintLayout cl;
 
-    ArrayList<stat_modifier_fragment> statModifierFragments = new ArrayList<>();
+    ArrayList<View> statModifierFragments = new ArrayList<>();
 
     @Nullable
     @Override
@@ -49,32 +49,44 @@ public class stats_fragment extends Fragment {
         cl.addView(v);
         set.clone(cl);
 
-        statModifierFragments.add(sm);
+        statModifierFragments.add(v);
 
         if (statModifierFragments.size() == 1) {
             set.connect(v.getId(), ConstraintSet.TOP, R.id.modifiers_text_view, ConstraintSet.BOTTOM, 0);
         } else {
-            set.connect(v.getId(), ConstraintSet.TOP, v.getId(), ConstraintSet.BOTTOM, 0);
+            set.connect(v.getId(), ConstraintSet.TOP,
+                    statModifierFragments.get(statModifierFragments.size() - 2).getId(), ConstraintSet.BOTTOM, 0);
         }
         set.connect(R.id.add_stat_modifier_button, ConstraintSet.TOP, v.getId(), ConstraintSet.BOTTOM, 16);
         set.applyTo(cl);
     }
 
-    public void removeModifier(stat_modifier_fragment fragment, int id) {
+    public void removeModifier(View fragment, int id) {
         ConstraintSet set = new ConstraintSet();
         cl.removeView(cl.findViewById(id));
-        cl.forceLayout();
         set.clone(cl);
         if (statModifierFragments.indexOf(fragment) != statModifierFragments.size() - 1) {
-            set.connect(statModifierFragments.indexOf(fragment) + 1, ConstraintSet.TOP,
-                statModifierFragments.indexOf(fragment) - 1, ConstraintSet.BOTTOM, 0);
+            if (statModifierFragments.indexOf(fragment) == 0) {
+                set.connect(
+                        statModifierFragments.get(statModifierFragments.indexOf(fragment) + 1).getId(),
+                        ConstraintSet.TOP,
+                        R.id.modifiers_text_view,
+                        ConstraintSet.BOTTOM, 0);
+            }
+            else {
+                set.connect(
+                        statModifierFragments.get(statModifierFragments.indexOf(fragment) + 1).getId(),
+                        ConstraintSet.TOP,
+                        statModifierFragments.get(statModifierFragments.indexOf(fragment) - 1).getId(),
+                        ConstraintSet.BOTTOM, 0);
+            }
         }
         statModifierFragments.remove(fragment);
         if (statModifierFragments.size() == 0) {
             set.connect(R.id.add_stat_modifier_button, ConstraintSet.TOP, R.id.modifiers_text_view, ConstraintSet.BOTTOM, 16);
         } else {
             set.connect(R.id.add_stat_modifier_button, ConstraintSet.TOP,
-                    statModifierFragments.get(statModifierFragments.size() - 1).getView().getId(), ConstraintSet.BOTTOM, 16);
+                    statModifierFragments.get(statModifierFragments.size() - 1).getId(), ConstraintSet.BOTTOM, 16);
         }
         set.applyTo(cl);
     }

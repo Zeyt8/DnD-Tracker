@@ -118,7 +118,8 @@ public class stat_modifier_fragment extends Fragment {
         });
 
         delete.setOnClickListener(v -> {
-            parent.removeModifier(this, view.getId());
+            Database.statModifiers.remove(statModifier);
+            parent.removeModifier(view, view.getId());
             Database.recalculateActualStats();
         });
     }

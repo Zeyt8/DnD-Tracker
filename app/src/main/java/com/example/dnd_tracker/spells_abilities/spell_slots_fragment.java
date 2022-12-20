@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
@@ -17,9 +18,15 @@ import com.example.dnd_tracker.database.Database;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 public class spell_slots_fragment extends Fragment {
 
-    View lastSpellSlot;
+    ArrayList<View> spellSlots = new ArrayList<>();
+    ConstraintLayout cl;
+
+    TextView spellSlotsText;
+    TextView abilitiesText;
 
     @Nullable
     @Override
@@ -31,41 +38,53 @@ public class spell_slots_fragment extends Fragment {
 
     @Override
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
+        spellSlotsText = view.findViewById(R.id.spell_slots_text);
+        abilitiesText = view.findViewById(R.id.abilities_text);
         Button decrease = view.findViewById(R.id.remove_spell_slot);
         Button increase = view.findViewById(R.id.add_spell_slot);
         increase.setOnClickListener(v -> {
             addSpellSlot(view);
         });
         decrease.setOnClickListener(v -> {
-            removeSpellSlot(view);
+            removeSpellSlot();
         });
+        cl = view.findViewById(R.id.parent_layout);
     }
 
     private void addSpellSlot(View view) {
-        Fragment sm = spell_slot_fragment.newInstance(Database.spellSlots.size() + 1);
+        spell_slot_fragment sm = spell_slot_fragment.newInstance(Database.spellSlots.size() + 1);
         View v = sm.onCreateView(getLayoutInflater(), (ViewGroup) view, null);
         sm.onViewCreated(v, null);
         v.setId(View.generateViewId());
-        ConstraintLayout cl = view.findViewById(R.id.parent_layout);
         ConstraintSet set = new ConstraintSet();
         cl.addView(v);
         set.clone(cl);
-        if (lastSpellSlot == null) {
-            set.connect(v.getId(), ConstraintSet.TOP, R.id.spell_slots_text, ConstraintSet.BOTTOM, 16);
+        spellSlots.add(v);
+        if (spellSlots.size() == 1) {
+            set.connect(v.getId(), ConstraintSet.TOP, spellSlotsText.getId(), ConstraintSet.BOTTOM, 16);
         } else {
-            set.connect(v.getId(), ConstraintSet.TOP, lastSpellSlot.getId(), ConstraintSet.BOTTOM, 16);
+            set.connect(v.getId(), ConstraintSet.TOP, spellSlots.get(spellSlots.size() - 2).getId(), ConstraintSet.BOTTOM, 16);
         }
-        set.connect(v.getId(), ConstraintSet.LEFT, R.id.parent_layout, ConstraintSet.LEFT, 24);
-        lastSpellSlot = v;
+        set.connect(v.getId(), ConstraintSet.LEFT, cl.getId(), ConstraintSet.LEFT, 24);
+        set.connect(abilitiesText.getId(), ConstraintSet.TOP, v.getId(), ConstraintSet.BOTTOM, 24);
         set.applyTo(cl);
     }
 
-    // TODO: Fix this
-    private void removeSpellSlot(View view) {
-        if (lastSpellSlot != null) {
-            ConstraintLayout cl = view.findViewById(R.id.parent_layout);
-            cl.removeView(lastSpellSlot);
-            lastSpellSlot = null;
+    private void removeSpellSlot() {
+        if (spellSlots.size() == 0) {
+            return;
         }
+        ConstraintSet set = new ConstraintSet();
+        cl.removeView(cl.findViewById(spellSlots.get(spellSlots.size() - 1).getId()));
+        set.clone(cl);
+        spellSlots.remove(spellSlots.size() - 1);
+        if (spellSlots.size() == 0) {
+            set.connect(abilitiesText.getId(), ConstraintSet.TOP, spellSlotsText.getId(), ConstraintSet.BOTTOM, 24);
+        } else {
+            set.connect(abilitiesText.getId(), ConstraintSet.TOP, spellSlots.get(spellSlots.size() - 1).getId(), ConstraintSet.BOTTOM, 24);
+        }
+        set.applyTo(cl);
+
+        Database.spellSlots.remove(Database.spellSlots.size() - 1);
     }
 }
