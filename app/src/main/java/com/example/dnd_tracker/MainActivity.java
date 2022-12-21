@@ -1,19 +1,11 @@
 package com.example.dnd_tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
-
-import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.util.Objects;
 
@@ -26,10 +18,10 @@ public final class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
 
-        tabLayout = findViewById(R.id.main_tabs);
-        viewPager = findViewById(R.id.viewpager);
+        tabLayout = findViewById(R.id.tabs);
+        viewPager = findViewById(R.id.view_pager);
 
-        VPAdapter vpAdapter = new VPAdapter(this);
+        MainVPAdapter vpAdapter = new MainVPAdapter(this);
         viewPager.setAdapter(vpAdapter);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

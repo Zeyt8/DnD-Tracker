@@ -16,8 +16,6 @@ import androidx.annotation.Nullable;
 import com.example.dnd_tracker.R;
 import com.example.dnd_tracker.database.Database;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 public class spell_slots_fragment extends Fragment {
@@ -37,7 +35,7 @@ public class spell_slots_fragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         spellSlotsText = view.findViewById(R.id.spell_slots_text);
         abilitiesText = view.findViewById(R.id.abilities_text);
         Button decrease = view.findViewById(R.id.remove_spell_slot);
@@ -66,7 +64,6 @@ public class spell_slots_fragment extends Fragment {
             set.connect(v.getId(), ConstraintSet.TOP, spellSlots.get(spellSlots.size() - 2).getId(), ConstraintSet.BOTTOM, 16);
         }
         set.connect(v.getId(), ConstraintSet.LEFT, cl.getId(), ConstraintSet.LEFT, 24);
-        set.connect(abilitiesText.getId(), ConstraintSet.TOP, v.getId(), ConstraintSet.BOTTOM, 24);
         set.applyTo(cl);
     }
 
@@ -74,16 +71,8 @@ public class spell_slots_fragment extends Fragment {
         if (spellSlots.size() == 0) {
             return;
         }
-        ConstraintSet set = new ConstraintSet();
         cl.removeView(cl.findViewById(spellSlots.get(spellSlots.size() - 1).getId()));
-        set.clone(cl);
         spellSlots.remove(spellSlots.size() - 1);
-        if (spellSlots.size() == 0) {
-            set.connect(abilitiesText.getId(), ConstraintSet.TOP, spellSlotsText.getId(), ConstraintSet.BOTTOM, 24);
-        } else {
-            set.connect(abilitiesText.getId(), ConstraintSet.TOP, spellSlots.get(spellSlots.size() - 1).getId(), ConstraintSet.BOTTOM, 24);
-        }
-        set.applyTo(cl);
 
         Database.spellSlots.remove(Database.spellSlots.size() - 1);
     }

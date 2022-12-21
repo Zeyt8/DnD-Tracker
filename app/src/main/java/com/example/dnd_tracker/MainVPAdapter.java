@@ -6,12 +6,12 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.dnd_tracker.buffs_debuffs.buffs_and_debuffs_fragment;
-import com.example.dnd_tracker.spells_abilities.spell_slots_fragment;
+import com.example.dnd_tracker.spells_abilities.spell_slots_abilities_fragment;
 import com.example.dnd_tracker.stats.stats_fragment;
 
-public class VPAdapter extends FragmentStateAdapter {
+public class MainVPAdapter extends FragmentStateAdapter {
 
-    public VPAdapter(@NonNull FragmentActivity fragmentActivity) {
+    public MainVPAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 
@@ -22,7 +22,7 @@ public class VPAdapter extends FragmentStateAdapter {
             case 0:
                 return new stats_fragment();
             case 1:
-                return new spell_slots_fragment();
+                return new spell_slots_abilities_fragment();
             case 2:
                 return new buffs_and_debuffs_fragment();
             default:

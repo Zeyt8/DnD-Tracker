@@ -27,7 +27,6 @@ public class spell_slot_fragment extends Fragment {
     EditText max;
 
     public spell_slot_fragment() {
-        // Required empty public constructor
         spellSlot = new SpellSlot();
         Database.spellSlots.add(spellSlot);
     }
