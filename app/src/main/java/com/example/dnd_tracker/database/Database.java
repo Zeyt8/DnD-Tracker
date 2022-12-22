@@ -2,8 +2,6 @@ package com.example.dnd_tracker.database;
 
 import com.example.dnd_tracker.Listener;
 import com.example.dnd_tracker.Stats;
-import com.example.dnd_tracker.spells_abilities.SpellSlot;
-import com.example.dnd_tracker.stats.StatModifier;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -26,6 +24,7 @@ public class Database {
     public static PlayerStats actualStats = new PlayerStats();
     public static ArrayList<StatModifier> statModifiers = new ArrayList<>();
     public static ArrayList<SpellSlot> spellSlots = new ArrayList<>();
+    public static ArrayList<Ability> abilities = new ArrayList<>();
 
     public static ArrayList<Listener> statChangeListeners = new ArrayList<>();
 

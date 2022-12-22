@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.dnd_tracker.R;
 import com.example.dnd_tracker.database.Database;
+import com.example.dnd_tracker.database.SpellSlot;
 
 public class spell_slot_fragment extends Fragment {
 

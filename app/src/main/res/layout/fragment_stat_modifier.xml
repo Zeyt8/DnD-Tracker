@@ -83,6 +83,7 @@
             android:id="@+id/delete_button"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:backgroundTint="#FFFFFF"
             android:src="@android:drawable/ic_menu_delete"
             android:tint="#B80000"
             app:layout_constraintBottom_toBottomOf="parent"

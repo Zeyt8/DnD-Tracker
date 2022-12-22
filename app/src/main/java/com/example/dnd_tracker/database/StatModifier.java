@@ -1,8 +1,11 @@
-package com.example.dnd_tracker.stats;
+package com.example.dnd_tracker.database;
 
 import com.example.dnd_tracker.Stats;
 
 public class StatModifier {
+
+    public String name;
+    public String description;
     public Stats stat = Stats.Str;
     public Types type = Types.Flat;
     public int value = 0;

@@ -32,7 +32,9 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="4dp"
+            android:fontFamily="@font/vecnabold_4yy4"
             android:text="-"
+            android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/add_spell_slot"
             app:layout_constraintStart_toEndOf="@+id/spell_slots_text"
             app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +46,9 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
+            android:fontFamily="@font/vecnabold_4yy4"
             android:text="+"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/remove_spell_slot"
             app:layout_constraintTop_toTopOf="parent" />

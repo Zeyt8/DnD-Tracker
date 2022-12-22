@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -21,6 +20,7 @@ import android.widget.Spinner;
 import com.example.dnd_tracker.R;
 import com.example.dnd_tracker.Stats;
 import com.example.dnd_tracker.database.Database;
+import com.example.dnd_tracker.database.StatModifier;
 
 public class stat_modifier_fragment extends Fragment {
 

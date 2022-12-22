@@ -1,4 +1,4 @@
-package com.example.dnd_tracker.spells_abilities;
+package com.example.dnd_tracker.database;
 
 public class SpellSlot {
     public int level = 0;
