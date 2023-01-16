@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.dnd_tracker.R;
+import com.example.dnd_tracker.database.Database;
 
 public class ability_with_max_value_fragment extends ability_fragment {
 
@@ -18,10 +19,12 @@ public class ability_with_max_value_fragment extends ability_fragment {
 
     public ability_with_max_value_fragment() {
         // Required empty public constructor
+        Database.abilities.add(ability);
     }
 
-    public static ability_with_max_value_fragment newInstance(String param1, String param2) {
+    public static ability_with_max_value_fragment newInstance(abilities_fragment parent) {
         ability_with_max_value_fragment fragment = new ability_with_max_value_fragment();
+        fragment.parent = parent;
         return fragment;
     }
 

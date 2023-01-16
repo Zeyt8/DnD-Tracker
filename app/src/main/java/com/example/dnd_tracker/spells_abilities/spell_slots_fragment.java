@@ -24,7 +24,6 @@ public class spell_slots_fragment extends Fragment {
     ConstraintLayout cl;
 
     TextView spellSlotsText;
-    TextView abilitiesText;
 
     @Nullable
     @Override
@@ -37,11 +36,10 @@ public class spell_slots_fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         spellSlotsText = view.findViewById(R.id.spell_slots_text);
-        abilitiesText = view.findViewById(R.id.abilities_text);
         Button decrease = view.findViewById(R.id.remove_spell_slot);
         Button increase = view.findViewById(R.id.add_spell_slot);
         increase.setOnClickListener(v -> {
-            addSpellSlot(view);
+            addSpellSlot();
         });
         decrease.setOnClickListener(v -> {
             removeSpellSlot();
@@ -49,9 +47,9 @@ public class spell_slots_fragment extends Fragment {
         cl = view.findViewById(R.id.parent_layout);
     }
 
-    private void addSpellSlot(View view) {
+    private spell_slot_fragment addSpellSlot() {
         spell_slot_fragment sm = spell_slot_fragment.newInstance(Database.spellSlots.size() + 1);
-        View v = sm.onCreateView(getLayoutInflater(), (ViewGroup) view, null);
+        View v = sm.onCreateView(getLayoutInflater(), cl, null);
         sm.onViewCreated(v, null);
         v.setId(View.generateViewId());
         ConstraintSet set = new ConstraintSet();
@@ -59,12 +57,13 @@ public class spell_slots_fragment extends Fragment {
         set.clone(cl);
         spellSlots.add(v);
         if (spellSlots.size() == 1) {
-            set.connect(v.getId(), ConstraintSet.TOP, spellSlotsText.getId(), ConstraintSet.BOTTOM, 16);
+            set.connect(v.getId(), ConstraintSet.TOP, spellSlotsText.getId(), ConstraintSet.BOTTOM, 36);
         } else {
             set.connect(v.getId(), ConstraintSet.TOP, spellSlots.get(spellSlots.size() - 2).getId(), ConstraintSet.BOTTOM, 16);
         }
-        set.connect(v.getId(), ConstraintSet.LEFT, cl.getId(), ConstraintSet.LEFT, 24);
+        set.connect(v.getId(), ConstraintSet.LEFT, cl.getId(), ConstraintSet.LEFT, 0);
         set.applyTo(cl);
+        return sm;
     }
 
     private void removeSpellSlot() {

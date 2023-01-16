@@ -35,11 +35,11 @@ public class stats_fragment extends Fragment {
     @Override
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         Button button = view.findViewById(R.id.add_stat_modifier_button);
-        button.setOnClickListener(v -> addModifier(view));
+        button.setOnClickListener(v -> addModifier());
         cl = view.findViewById(R.id.parent_layout);
     }
 
-    public void addModifier(View view) {
+    public stat_modifier_fragment addModifier() {
         stat_modifier_fragment sm = stat_modifier_fragment.newInstance(this);
         View v = sm.onCreateView(getLayoutInflater(), cl, null);
         sm.onViewCreated(v, null);
@@ -52,13 +52,15 @@ public class stats_fragment extends Fragment {
         statModifierFragments.add(v);
 
         if (statModifierFragments.size() == 1) {
-            set.connect(v.getId(), ConstraintSet.TOP, R.id.modifiers_text_view, ConstraintSet.BOTTOM, 0);
+            set.connect(v.getId(), ConstraintSet.TOP, R.id.modifiers_text_view, ConstraintSet.BOTTOM, 16);
         } else {
             set.connect(v.getId(), ConstraintSet.TOP,
-                    statModifierFragments.get(statModifierFragments.size() - 2).getId(), ConstraintSet.BOTTOM, 0);
+                    statModifierFragments.get(statModifierFragments.size() - 2).getId(), ConstraintSet.BOTTOM, 16);
         }
         set.connect(R.id.add_stat_modifier_button, ConstraintSet.TOP, v.getId(), ConstraintSet.BOTTOM, 16);
         set.applyTo(cl);
+
+        return sm;
     }
 
     public void removeModifier(View fragment, int id) {
@@ -71,14 +73,14 @@ public class stats_fragment extends Fragment {
                         statModifierFragments.get(statModifierFragments.indexOf(fragment) + 1).getId(),
                         ConstraintSet.TOP,
                         R.id.modifiers_text_view,
-                        ConstraintSet.BOTTOM, 0);
+                        ConstraintSet.BOTTOM, 16);
             }
             else {
                 set.connect(
                         statModifierFragments.get(statModifierFragments.indexOf(fragment) + 1).getId(),
                         ConstraintSet.TOP,
                         statModifierFragments.get(statModifierFragments.indexOf(fragment) - 1).getId(),
-                        ConstraintSet.BOTTOM, 0);
+                        ConstraintSet.BOTTOM, 16);
             }
         }
         statModifierFragments.remove(fragment);

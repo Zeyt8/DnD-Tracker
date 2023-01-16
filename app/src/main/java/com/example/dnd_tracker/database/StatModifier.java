@@ -11,7 +11,7 @@ public class StatModifier {
     public int value = 0;
     public boolean active = true;
 
-    enum Types {
+    public enum Types {
         Flat,
         Percentage,
         Setter

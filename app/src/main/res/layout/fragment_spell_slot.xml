@@ -99,5 +99,14 @@
             app:layout_constraintStart_toEndOf="@+id/max_spell_slots"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5px"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/max_spell_slots" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -2,6 +2,8 @@ package com.example.dnd_tracker.database;
 
 import com.example.dnd_tracker.Listener;
 import com.example.dnd_tracker.Stats;
+import com.example.dnd_tracker.spells_abilities.spell_slots_fragment;
+import com.example.dnd_tracker.stats.stats_fragment;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -10,6 +12,8 @@ import java.util.Map;
 public class Database {
 
     private static Database Instance;
+    public static stats_fragment statsFragment;
+    public static spell_slots_fragment spellSlotsFragment;
 
     private Database() {}
 
@@ -59,5 +63,13 @@ public class Database {
         for (Listener listener : statChangeListeners) {
             listener.onEvent();
         }
+    }
+
+    void save() {
+
+    }
+
+    void loadSave() {
+
     }
 }
