@@ -17,7 +17,8 @@ public class ability_with_input_fragment extends ability_fragment {
 
     public ability_with_input_fragment() {
         // Required empty public constructor
-        Database.abilities.add(ability);
+        super();
+        ability.type = abilities_fragment.FragmentType.Input;
     }
 
     public static ability_with_input_fragment newInstance(abilities_fragment parent) {
@@ -36,5 +37,16 @@ public class ability_with_input_fragment extends ability_fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        decrease = view.findViewById(R.id.decrement_button);
+        increase = view.findViewById(R.id.increment_button);
+
+        decrease.setOnClickListener(v -> {
+            ability.value--;
+            currentValue.setText(String.valueOf(ability.value));
+        });
+        increase.setOnClickListener(v -> {
+            ability.value++;
+            currentValue.setText(String.valueOf(ability.value));
+        });
     }
 }

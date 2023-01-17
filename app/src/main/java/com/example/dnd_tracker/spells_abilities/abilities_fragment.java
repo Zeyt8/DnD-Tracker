@@ -52,6 +52,7 @@ public class abilities_fragment extends Fragment {
             addAbility(FragmentType.values()[fragmentTypeSpinner.getSelectedItemPosition()]);
         });
         cl = view.findViewById(R.id.parent_layout);
+        Database.getInstance().abilitiesFragment = this;
     }
 
     public ability_fragment addAbility(FragmentType type) {

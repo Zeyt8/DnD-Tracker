@@ -24,6 +24,8 @@ import com.example.dnd_tracker.database.StatModifier;
 
 public class stat_modifier_fragment extends Fragment {
 
+    EditText name;
+    EditText description;
     StatModifier statModifier;
     Spinner stat;
     Spinner type;
@@ -60,11 +62,39 @@ public class stat_modifier_fragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        name = view.findViewById(R.id.stat_modifier_name);
+        description = view.findViewById(R.id.stat_modifier_description);
         stat = view.findViewById(R.id.stat_spinner);
         type = view.findViewById(R.id.type_spinner);
         value = view.findViewById(R.id.value_text_input);
         active = view.findViewById(R.id.active_checkbox);
         delete = view.findViewById(R.id.delete_button);
+
+        name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                statModifier.name = s.toString();
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+        description.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                statModifier.description = s.toString();
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
         stat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -122,5 +152,15 @@ public class stat_modifier_fragment extends Fragment {
             parent.removeModifier(view, view.getId());
             Database.recalculateActualStats();
         });
+    }
+
+    public void setModifier(StatModifier statModifier) {
+        this.statModifier = statModifier;
+        name.setText(statModifier.name);
+        description.setText(statModifier.description);
+        stat.setSelection(statModifier.stat.ordinal());
+        type.setSelection(statModifier.type.ordinal());
+        value.setText(String.valueOf(statModifier.value));
+        active.setChecked(statModifier.active);
     }
 }

@@ -45,9 +45,10 @@ public class spell_slots_fragment extends Fragment {
             removeSpellSlot();
         });
         cl = view.findViewById(R.id.parent_layout);
+        Database.getInstance().spellSlotsFragment = this;
     }
 
-    private spell_slot_fragment addSpellSlot() {
+    public spell_slot_fragment addSpellSlot() {
         spell_slot_fragment sm = spell_slot_fragment.newInstance(Database.spellSlots.size() + 1);
         View v = sm.onCreateView(getLayoutInflater(), cl, null);
         sm.onViewCreated(v, null);

@@ -88,4 +88,10 @@ public class spell_slot_fragment extends Fragment {
         current.setText(String.valueOf(value));
         spellSlot.current = value;
     }
+
+    public void setSpellSlot(SpellSlot spellSlot) {
+        this.spellSlot = spellSlot;
+        setCurrentSpellSlot(spellSlot.current);
+        max.setText(String.valueOf(spellSlot.max));
+    }
 }

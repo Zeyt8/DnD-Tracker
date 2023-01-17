@@ -2,10 +2,13 @@ package com.example.dnd_tracker.spells_abilities;
 
 import android.os.Bundle;
 
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
+
+import androidx.annotation.NonNull;
 
 import com.example.dnd_tracker.R;
 import com.example.dnd_tracker.database.Database;
@@ -16,7 +19,8 @@ public class ability_with_slider_fragment extends ability_fragment {
 
     public ability_with_slider_fragment() {
         // Required empty public constructor
-        Database.abilities.add(ability);
+        super();
+        ability.type = abilities_fragment.FragmentType.Slider;
     }
 
     public static ability_with_slider_fragment newInstance(abilities_fragment parent) {
@@ -33,7 +37,35 @@ public class ability_with_slider_fragment extends ability_fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        seekBar = view.findViewById(R.id.seekBar);
+        maxValue.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 0) {
+                    seekBar.setMax(Integer.parseInt(s.toString()));
+                }
+            }
+            @Override
+            public void afterTextChanged(android.text.Editable s) {
+            }
+        });
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                ability.value = progress;
+                currentValue.setText(String.valueOf(ability.value));
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
     }
 }

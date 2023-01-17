@@ -1,6 +1,7 @@
 package com.example.dnd_tracker.stats;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.dnd_tracker.R;
+import com.example.dnd_tracker.database.Database;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,6 +39,7 @@ public class stats_fragment extends Fragment {
         Button button = view.findViewById(R.id.add_stat_modifier_button);
         button.setOnClickListener(v -> addModifier());
         cl = view.findViewById(R.id.parent_layout);
+        Database.getInstance().statsFragment = this;
     }
 
     public stat_modifier_fragment addModifier() {

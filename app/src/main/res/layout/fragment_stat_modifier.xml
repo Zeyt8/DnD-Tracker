@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/stat_modifier_name"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/stat_modifier_description"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -36,7 +36,7 @@
             android:inputType="textPersonName"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintTop_toBottomOf="@+id/stat_modifier_name" />
 
         <Spinner
             android:id="@+id/stat_spinner"
@@ -46,7 +46,7 @@
             android:entries="@array/stats"
             app:layout_constraintEnd_toStartOf="@+id/type_spinner"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintTop_toBottomOf="@+id/stat_modifier_description" />
 
         <Spinner
             android:id="@+id/type_spinner"
@@ -54,9 +54,9 @@
             android:layout_height="wrap_content"
             android:entries="@array/modifierTypes"
             app:layout_constraintBottom_toTopOf="@+id/view3"
-            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
+            app:layout_constraintEnd_toEndOf="@+id/stat_modifier_description"
             app:layout_constraintStart_toEndOf="@+id/stat_spinner"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintTop_toBottomOf="@+id/stat_modifier_description" />
 
         <EditText
             android:id="@+id/value_text_input"
@@ -70,7 +70,7 @@
             android:textSize="60sp"
             app:layout_constraintBottom_toTopOf="@+id/view3"
             app:layout_constraintEnd_toStartOf="@+id/delete_button"
-            app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2"
+            app:layout_constraintStart_toEndOf="@+id/stat_modifier_description"
             app:layout_constraintTop_toTopOf="parent" />
 
         <CheckBox
